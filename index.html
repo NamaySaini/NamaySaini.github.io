@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Namay Saini | Software Engineer</title>
+<meta name="description" content="Namay Saini is a Computer Science student at UT Austin and software engineering intern building computer vision pipelines, automation platforms, and embedded systems.">
+<meta property="og:title" content="Namay Saini | Software Engineer">
+<meta property="og:description" content="CS at UT Austin. Software engineering intern at Family Dollar and RealWork Labs.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23bf5700'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' text-anchor='middle' fill='%23fff'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f3ee;
+  --surface: #fffdf9;
+  --ink: #1a1815;
+  --muted: #6b655c;
+  --line: #e0dad0;
+  --cell: #e9e3d8;
+  --accent: #bf5700;
+  --accent-ink: #a14a00;
+  --ok: #2f7d4f;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #100f0d; --surface: #181613; --ink: #f1ece3; --muted: #9c958a;
+    --line: #2b2823; --cell: #23201c; --accent: #f08a3c; --accent-ink: #f5a364; --ok: #6fc391;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #100f0d; --surface: #181613; --ink: #f1ece3; --muted: #9c958a;
+  --line: #2b2823; --cell: #23201c; --accent: #f08a3c; --accent-ink: #f5a364; --ok: #6fc391;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 16px/1.65 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background .3s, color .3s;
+}
+a { color: inherit; }
+::selection { background: var(--accent); color: #fff; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: .02em; }
+
+/* nav */
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent; transition: border-color .3s;
+}
+header.scrolled { border-color: var(--line); }
+nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand { font-family: var(--serif); font-size: 24px; text-decoration: none; }
+.brand span { color: var(--accent); }
+.links { display: flex; align-items: center; gap: 28px; }
+.links a { text-decoration: none; color: var(--muted); font-size: 14px; transition: color .2s; }
+.links a:hover { color: var(--ink); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 999px; border: 1px solid var(--ink);
+  background: var(--ink); color: var(--bg) !important; text-decoration: none;
+  font-size: 14px; font-weight: 500; transition: transform .2s, background .2s, border-color .2s;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); color: #fff !important; transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink) !important; border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--ink); background: transparent; color: var(--ink) !important; }
+.theme {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line);
+  background: none; color: var(--ink); cursor: pointer; display: grid; place-items: center;
+}
+.theme:hover { border-color: var(--ink); }
+.theme svg { width: 16px; height: 16px; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.25fr .9fr; gap: 56px; align-items: center; padding: 88px 0 72px; }
+.hero > * { min-width: 0; }
+.status { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); margin-bottom: 24px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 var(--ok); animation: pulse 2.4s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+h1 { font: 400 clamp(56px, 9vw, 104px)/.95 var(--serif); letter-spacing: -.02em; margin: 0 0 28px; }
+h1 em { color: var(--accent); }
+.lede { font-size: 18px; color: var(--muted); max-width: 54ch; margin: 0 0 32px; }
+.lede strong { color: var(--ink); font-weight: 500; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* mat */
+.mat-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+.mat-head, .mat-foot { display: flex; justify-content: space-between; align-items: center; color: var(--muted); }
+.mat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0; aspect-ratio: 1; cursor: crosshair; touch-action: none; }
+.mat i {
+  --v: 0; border-radius: 10px;
+  background: color-mix(in oklab, var(--accent) calc(var(--v) * 1%), var(--cell));
+}
+.mat-state { color: var(--ok); transition: color .2s; }
+.mat-card.alert .mat-state { color: var(--accent); }
+.mat-card.alert { border-color: var(--accent); }
+.mat-note { color: var(--muted); margin: 12px 2px 0; font-size: 13px; line-height: 1.5; }
+.mat-note a { color: var(--accent-ink); }
+
+/* stats */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
+.stat { padding: 28px 24px 28px 0; }
+.stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+.stat b { display: block; font: 400 44px/1 var(--serif); margin-bottom: 8px; }
+.stat span { color: var(--muted); font-size: 14px; line-height: 1.4; display: block; }
+
+/* sections */
+section { padding: 96px 0 0; }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+.sec-head .mono { color: var(--accent-ink); }
+h2 { font: 400 clamp(36px, 5vw, 52px)/1 var(--serif); margin: 0; letter-spacing: -.01em; }
+
+/* experience */
+.job { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--line); }
+.job .when { color: var(--muted); padding-top: 5px; }
+.job h3 { font-size: 19px; font-weight: 600; margin: 0 0 2px; }
+.job .org { color: var(--muted); margin: 0 0 14px; }
+.job .org b { color: var(--accent-ink); font-weight: 500; }
+.job ul { margin: 0; padding-left: 18px; }
+.job li { margin-bottom: 8px; }
+.job li::marker { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding: 0; list-style: none; }
+.tags li { font-family: var(--mono); font-size: 11.5px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); margin: 0; }
+.also { border-top: 1px solid var(--line); padding-top: 28px; }
+.also h4 { margin: 0 0 12px; color: var(--muted); font-weight: 500; }
+.also-row { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 10px 0; font-size: 15px; }
+.also-row .when { color: var(--muted); padding-top: 3px; }
+.also-row span { color: var(--muted); }
+
+/* projects */
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.proj {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px;
+  display: flex; flex-direction: column; transition: transform .25s, border-color .25s;
+}
+.proj:hover { transform: translateY(-4px); border-color: var(--accent); }
+.proj.feature { grid-column: span 3; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; }
+.badge { display: inline-block; color: var(--accent-ink); margin-bottom: 14px; }
+.proj h3 { font: 400 34px/1.05 var(--serif); margin: 0 0 6px; }
+.proj .sub { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+.proj p { margin: 0 0 12px; font-size: 15px; }
+.proj .tags { margin-top: auto; padding-top: 12px; }
+.spec { border-left: 1px solid var(--line); padding-left: 40px; display: grid; align-content: center; gap: 0; }
+.spec div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.spec div:last-child { border: 0; }
+.spec dt { color: var(--muted); }
+.spec dd { margin: 0; text-align: right; }
+
+/* about */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.about p { margin: 0 0 16px; }
+.edu { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px; margin-top: 24px; }
+.edu h3 { margin: 0 0 4px; font-size: 18px; }
+.edu p { color: var(--muted); margin: 0 0 4px; font-size: 15px; }
+.skills dl { margin: 0; }
+.skills dt { color: var(--accent-ink); margin-bottom: 10px; }
+.skills dd { margin: 0 0 28px; }
+.skills .tags { margin: 0; }
+.skills .tags li { font-size: 12.5px; padding: 5px 12px; color: var(--ink); }
+
+/* contact */
+.contact { text-align: center; padding: 120px 0 96px; }
+.contact h2 { font-size: clamp(44px, 7vw, 80px); margin-bottom: 20px; }
+.contact p { color: var(--muted); max-width: 46ch; margin: 0 auto 32px; font-size: 17px; }
+.contact .cta { justify-content: center; }
+footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .dot { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 860px) {
+  .wrap { padding: 0 16px; }
+  .links a:not(.btn) { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 56px 0 48px; gap: 40px; }
+  .mat-card { max-width: 380px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat, .stat + .stat { padding: 22px 12px 22px 0; border-left: 0; }
+  .stat:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .stat b { font-size: 36px; }
+  section { padding-top: 72px; }
+  .job, .also-row { grid-template-columns: 1fr; gap: 6px; }
+  .projects { grid-template-columns: 1fr; }
+  .proj.feature { grid-column: auto; grid-template-columns: 1fr; gap: 20px; }
+  .spec { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 8px; }
+  .about { grid-template-columns: 1fr; gap: 40px; }
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <nav class="wrap">
+    <a class="brand" href="#top">Namay Saini<span>.</span></a>
+    <div class="links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="theme" id="theme" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div>
+      <div class="status mono"><span class="dot"></span>CS @ UT AUSTIN · CLASS OF 2028</div>
+      <h1>Namay <em>Saini</em></h1>
+      <p class="lede">
+        I build software that reaches into the physical world:
+        <strong>computer vision running on cameras in 356 stores</strong>,
+        <strong>automation serving 2,000+ customer accounts</strong>, and
+        <strong>firmware for a pressure-sensing mat</strong> that helps prevent injuries.
+      </p>
+      <div class="cta">
+        <a class="btn" href="#experience">See my work</a>
+        <a class="btn ghost" href="https://github.com/NamaySaini" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/namay-saini/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <aside class="mat-card" id="matCard" aria-label="Interactive demo of the Nudge pressure mat">
+      <div class="mat-head mono"><span>NUDGE · 16 SENSORS</span><span id="matState" class="mat-state">● BALANCED</span></div>
+      <div class="mat" id="mat" aria-hidden="true"></div>
+      <div class="mat-foot mono"><span>PEAK <b id="matPeak">0000</b> / 4095</span><span>BLE · 500 MS</span></div>
+      <p class="mat-note">Move your cursor over the mat, then hold still for three seconds. This is how <a href="#projects">Nudge</a> decides it's time to shift your weight.</p>
+    </aside>
+  </div>
+
+  <div class="stats reveal">
+    <div class="stat"><b>94%</b><span>card-skimmer detection from live CCTV</span></div>
+    <div class="stat"><b>356</b><span>stores across 37 states under test</span></div>
+    <div class="stat"><b>2,000+</b><span>customer accounts onboarded automatically</span></div>
+    <div class="stat"><b>60%</b><span>less testing time for medical implants</span></div>
+  </div>
+
+  <section id="experience">
+    <div class="sec-head reveal"><span class="mono">01</span><h2>Experience</h2></div>
+
+    <article class="job reveal">
+      <div class="when mono">SEP 2026 – PRESENT</div>
+      <div>
+        <h3>Software Engineering Intern</h3>
+        <p class="org"><b>Family Dollar</b> · Austin, TX</p>
+        <ul>
+          <li>Prototyping a Gemini-based computer vision pipeline that detects card skimmers on payment terminals from live CCTV footage with 94% detection.</li>
+          <li>Built an automated test harness running parallel, resumable Gemini inspections on recorded frames from 356 stores across 37 states.</li>
+        </ul>
+        <ul class="tags"><li>Python</li><li>Gemini</li><li>OpenCV</li><li>Vertex AI</li><li>Google ADK</li><li>Cloud Run</li><li>BigQuery</li></ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="when mono">MAY 2026 – PRESENT</div>
+      <div>
+        <h3>Software Engineering Intern</h3>
+        <p class="org"><b>RealWork Labs</b> · Austin, TX</p>
+        <ul>
+          <li>Automated onboarding for 2,000+ customer accounts, covering business-info collection, privacy-policy verification, and lifecycle email and SMS outreach, replacing manual ops workflows.</li>
+          <li>Building an AI voice assistant feature that records and transcribes live call handoffs to human reps.</li>
+        </ul>
+        <ul class="tags"><li>TypeScript</li><li>Firebase</li><li>Twilio</li><li>Salesforce</li><li>Vapi</li><li>AWS Lambda</li><li>S3</li></ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="when mono">APR 2025 – AUG 2025</div>
+      <div>
+        <h3>Software Engineering Intern</h3>
+        <p class="org"><b>Teliatry</b> · Richardson, TX</p>
+        <ul>
+          <li>Cut testing time by 60% for vagus nerve stimulation implants used in veterinary care by building an automated Java/C++ test framework supporting 50 dogs per month.</li>
+          <li>Built a TensorFlow model predicting blood pressure from pulse signals at 92% accuracy for implantable oximeters.</li>
+        </ul>
+        <ul class="tags"><li>Java</li><li>C++</li><li>TensorFlow</li><li>Hardware testing</li></ul>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="when mono">JUN 2023 – AUG 2023</div>
+      <div>
+        <h3>Research Assistant</h3>
+        <p class="org"><b>UT Dallas Advanced Network Lab</b> · Richardson, TX</p>
+        <ul>
+          <li>Authored a <a href="https://utdallas.app.box.com/v/su23-res-papers/file/1279721421309" target="_blank" rel="noopener">research paper</a> on maximizing edge-computing network profit with graph-based routing optimization.</li>
+          <li>Implemented the routing solution in Python with heap-based priority queues and dynamic bandwidth allocation.</li>
+        </ul>
+        <ul class="tags"><li>Python</li><li>Graph algorithms</li><li>Edge computing</li></ul>
+      </div>
+    </article>
+
+    <div class="also reveal">
+      <h4 class="mono">ALSO</h4>
+      <div class="also-row"><div class="when mono">OCT 2025 – SEP 2026</div><div><b>Jump Finance</b>, Software Engineering Intern <span>· Resume generator and course registration features in React and SQL for a platform used by the University of Gambia</span></div></div>
+      <div class="also-row"><div class="when mono">JAN 2026 – MAY 2026</div><div><b>UT Austin Freshman Research Initiative</b>, EvoDevOmics <span>· Differential gene expression and PCA across 5 mammalian species with DESeq2</span></div></div>
+      <div class="also-row"><div class="when mono">JUN 2024 – OCT 2024</div><div><b>Zyvex Labs</b>, Technology Intern <span>· ML on PPG waveforms and cleanroom assembly of implantable NIRS sensors</span></div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head reveal"><span class="mono">02</span><h2>Projects</h2></div>
+    <div class="projects">
+
+      <article class="proj feature reveal">
+        <div>
+          <span class="badge mono">★ BEST BUSINESS AWARD · TEXAS CONVERGENT</span>
+          <h3>Nudge</h3>
+          <p class="sub">Smart weight-distribution mat and injury-prevention app · Feb – May 2026</p>
+          <p>A pressure-sensing mat and companion app that tracks how weight is distributed and nudges wheelchair users to shift before pressure injuries form.</p>
+          <p>I wrote the ESP32 firmware in C++ that scans 16 Velostat sensors through a multiplexer and streams live pressure data to the app over BLE, alerting on sustained high pressure.</p>
+          <ul class="tags"><li>C++</li><li>ESP32</li><li>Arduino</li><li>BLE</li><li>React</li><li>Node.js</li><li>Supabase</li></ul>
+        </div>
+        <dl class="spec mono">
+          <div><dt>SENSORS</dt><dd>16 × Velostat</dd></div>
+          <div><dt>SCAN INTERVAL</dt><dd>500 ms</dd></div>
+          <div><dt>TRANSPORT</dt><dd>Bluetooth Low Energy</dd></div>
+          <div><dt>MCU</dt><dd>ESP32 + multiplexer</dd></div>
+          <div><dt>BACKEND</dt><dd>Node.js + Supabase</dd></div>
+        </dl>
+      </article>
+
+      <article class="proj reveal" style="grid-column: span 2">
+        <span class="badge mono">TEXAS CONVERGENT</span>
+        <h3>Syntra</h3>
+        <p class="sub">Athlete-coach performance and wellness platform · Sep – Dec 2025</p>
+        <p>A dual-dashboard mobile app that turns Apple Health data into real-time performance and recovery metrics for high school athletes and their coaches.</p>
+        <p>Built a RESTful Express API with 16 endpoints, Mongoose schemas for 9 physiological metrics (HRV, VO2 max, SpO2, sleep), and JWT/bcrypt auth.</p>
+        <ul class="tags"><li>React</li><li>Node.js</li><li>Express</li><li>MongoDB</li><li>Sahha API</li></ul>
+      </article>
+
+      <article class="proj reveal">
+        <span class="badge mono">★ 3RD OF 46 TEAMS · WARRIORHACKS</span>
+        <h3>Pathways</h3>
+        <p class="sub">Scholarship matching · Sep 2025</p>
+        <p>Built in 24 hours with a team of 4. A weighted-matching algorithm and Inclusivity Index survey rank scholarships for each student.</p>
+        <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Vercel</li></ul>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head reveal"><span class="mono">03</span><h2>About</h2></div>
+    <div class="about">
+      <div class="reveal">
+        <p>I'm a Computer Science student at UT Austin with a minor in Statistics and Data Science. I started in research labs and cleanrooms, soldering implantable sensors and writing ML models for biosignals, and I've carried that hardware-meets-software instinct into everything since.</p>
+        <p>Today I split my time between shipping computer vision at Family Dollar, automation and voice AI at RealWork Labs, and building products with Texas Convergent.</p>
+        <div class="edu">
+          <h3>The University of Texas at Austin</h3>
+          <p>B.S. Computer Science, Minor in Statistics and Data Science</p>
+          <p class="mono">GPA 3.76 · EXPECTED MAY 2028</p>
+          <ul class="tags"><li>Operating Systems</li><li>Computer Architecture</li><li>Data Structures</li><li>Discrete Math</li><li>Linear Algebra</li><li>Probability &amp; Statistics</li></ul>
+        </div>
+      </div>
+      <div class="skills reveal">
+        <dl>
+          <dt class="mono">LANGUAGES</dt>
+          <dd><ul class="tags"><li>Python</li><li>Java</li><li>TypeScript</li><li>JavaScript</li><li>C</li><li>C++</li><li>SQL</li><li>Swift</li></ul></dd>
+          <dt class="mono">CLOUD &amp; AI</dt>
+          <dd><ul class="tags"><li>AWS (S3, Lambda, CloudWatch)</li><li>Vertex AI</li><li>BigQuery</li><li>Cloud Run</li><li>Gemini</li><li>Google ADK</li><li>OpenCV</li><li>TensorFlow</li><li>Vapi</li><li>Claude Code</li></ul></dd>
+          <dt class="mono">FRAMEWORKS &amp; TOOLS</dt>
+          <dd><ul class="tags"><li>React</li><li>Next.js</li><li>Node.js</li><li>Supabase</li><li>Firebase</li><li>MongoDB</li><li>Salesforce</li><li>Twilio</li><li>Git</li><li>Arduino</li></ul></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact reveal" id="contact">
+    <h2>Let's <em style="color:var(--accent)">talk.</em></h2>
+    <p>I'm looking for software engineering internships. If you think I'd be a good fit for your team, I'd love to hear from you.</p>
+    <div class="cta">
+      <a class="btn" href="mailto:namaysaini@utexas.edu">namaysaini@utexas.edu</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/namay-saini/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/NamaySaini" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <footer class="mono">
+    <span>© <span id="yr"></span> NAMAY SAINI</span>
+    <span>AUSTIN, TX</span>
+  </footer>
+</main>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // theme
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch {}
+  });
+
+  // header border + reveals
+  const header = document.querySelector('header');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // pressure mat
+  const mat = document.getElementById('mat'), card = document.getElementById('matCard');
+  const peakEl = document.getElementById('matPeak'), stateEl = document.getElementById('matState');
+  const cells = Array.from({ length: 16 }, () => mat.appendChild(document.createElement('i')));
+  let cx = 1.5, cy = 1.5, tx = 1.5, ty = 1.5, hover = false;
+  let peakIdx = -1, peakSince = 0, lastText = 0;
+
+  const aim = e => {
+    const r = mat.getBoundingClientRect();
+    tx = (e.clientX - r.left) / r.width * 4 - .5;
+    ty = (e.clientY - r.top) / r.height * 4 - .5;
+    hover = true;
+  };
+  mat.addEventListener('pointermove', aim);
+  mat.addEventListener('pointerdown', aim);
+  mat.addEventListener('pointerleave', () => hover = false);
+
+  function frame(now) {
+    const t = now / 1000;
+    if (!hover) { tx = 1.5 + 1.2 * Math.sin(t * .9); ty = 1.5 + 1.0 * Math.cos(t * .6); }
+    cx += (tx - cx) * .12; cy += (ty - cy) * .12;
+    let max = 0, idx = 0;
+    cells.forEach((c, i) => {
+      const dx = (i % 4) - cx, dy = Math.floor(i / 4) - cy;
+      const v = Math.exp(-(dx * dx + dy * dy) / 1.6) * .92 + .04 * Math.sin(t * 2 + i * 1.7) + .05;
+      const p = Math.max(0, Math.min(1, v));
+      c.style.setProperty('--v', (p * 100).toFixed(1));
+      if (p > max) { max = p; idx = i; }
+    });
+    if (idx !== peakIdx) { peakIdx = idx; peakSince = now; }
+    const alert = now - peakSince > 3000;
+    if (now - lastText > 250) {
+      lastText = now;
+      peakEl.textContent = String(Math.round(max * 4095)).padStart(4, '0');
+      card.classList.toggle('alert', alert);
+      stateEl.textContent = alert ? '▲ SHIFT YOUR WEIGHT' : '● BALANCED';
+    }
+    if (!reduce || hover) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  if (reduce) mat.addEventListener('pointerenter', () => requestAnimationFrame(frame));
+})();
+</script>
+</body>
+</html>
